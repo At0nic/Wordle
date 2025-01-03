@@ -10,17 +10,18 @@ let currentRow = 0;
 let guesses = [];
 const maxRows = 6;
 
-// Select the element with the class 'board'
+// Select '.board'
 let board = document.querySelector('.board');
 console.log(`board${wordLength}`);
 
-// Rename the class to 'board4', 'board5', or 'board6', etc.
+// Rename class to 'board4' || 'board5'|| 'board6'
 if (board) {
     board.classList.replace('board', `board${wordLength}`);  // Corrected this part
 } else {
     console.error('Element with class "board" not found');
 }
 
+//index.txt load
 function loadWords() {
     fetch('index.txt')
         .then(response => response.text())
@@ -45,6 +46,7 @@ function loadWords() {
         });
 }
 
+//load
 document.addEventListener('DOMContentLoaded', () => {
     loadWords();
     createBoard();
@@ -56,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handlePhysicalKeyboardInput);
 });
 
+//board
 function createBoard() {
     const board = document.querySelector(`.board${wordLength}`);  // Using dynamic class name
 
@@ -69,6 +72,7 @@ function createBoard() {
     }
 }
 
+//keyboard
 function createKeyboard() {
     const keyboardContainer = document.querySelector('.keyboard');
     const alphabet = 'ĚŠČŘŽÝÁÍÉŮQWERTYUIOPASDFGHJKL ZXCVBNM '.split('');
@@ -173,7 +177,7 @@ function resetGame() {
     document.querySelectorAll('.keyboard button').forEach(button => button.disabled = false);
 }
 
-// Handle physical keyboard input
+//physical keyboard input
 function handlePhysicalKeyboardInput(event) {
     const key = event.key.toUpperCase();
     const isLetter = /^[A-ZÁÉÍÓÚÝĚŮČĎŇŘŠŤŽ]+$/.test(key);
